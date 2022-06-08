@@ -109,6 +109,9 @@ source $ZSH/oh-my-zsh.sh
 
 alias showLog="tail -f /cygdrive/c/Program\ Files/Apache\ Software\ Foundation/Tomcat\ 9.0/logs/*"
 
+#functions
+#VS Code
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
