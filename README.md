@@ -1,2 +1,5 @@
-# zshrc
-My personal Z-Shell / ZSH configuration.
+# .zshrc
+
+*My personal Z-Shell / zsh configuration.*
+
+
