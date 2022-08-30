@@ -9,7 +9,14 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
+
+# Flutter
+export PATH=~/Documents/flutter/bin:$PATH
+
+#boost
+export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:-I//Users/christoph_rohde/opt/anaconda3/include/python3.9"
+#python: /Users/christoph_rohde/opt/anaconda3/bin/python3/Library/Frameworks/Python.framework/Versions/3.9/bin/python3/usr/local/bin/python3/usr/bin/python3
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -80,6 +87,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # User configuration
 
@@ -107,11 +115,74 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias showLog="tail -f /cygdrive/c/Program\ Files/Apache\ Software\ Foundation/Tomcat\ 9.0/logs/*"
+# Alias
+alias ..="cd .."
+alias cd..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# Flutter
+alias iosSimulator="flutter emulator --launch apple_ios_simulator"
+
+#Networking
+alias showip="ifconfig | grep 'inet ' | grep -v  127.0.0.1'"
+alias ping="ping -c 5"
+alias showMacaddress="ifconfig | grep ether | awk '{print \$2}'"
+alias showIPaddress="ifconfig | grep inet | grep -v inet6 | awk '{print \$2}'"
+alias showIPv6address="ifconfig | grep inet6 | awk '{print \$2}'"
+alias showHostname="hostname"
+alias showHosts="cat /etc/hosts"
+alias showNetwork="networksetup -listnetworkserviceorder"
+alias showNetworkInterface="networksetup -listallnetworkservices"
+alias networkinfo="networksetup -getinfo"
+
+#My Logs
+alias aisa="cd /Volumes/Code/A.I.S.A./"
+alias showLog="glow /Volumes/Code/Logs/A.I.S.A._Log.md"
+#alias tcLog = "tail -f /cygdrive/c/Program\ Files/Apache\ Software\ Foundation/Tomcat\ 9.0/logs/*"
+
+#anaconda
+alias tensor="conda activate tensorflow" 
+alias base="conda activate base" 
+
 
 #functions
 #VS Code
 code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 
+
+
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Homebrew
+#  if type brew &>/dev/null; then
+#   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+#
+#    autoload -Uz compinit
+#    compinit
+#  fi
+
+
+#Anaconda
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/christoph_rohde/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/christoph_rohde/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/christoph_rohde/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/christoph_rohde/opt/anaconda3/bin:$PATH"
+
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
